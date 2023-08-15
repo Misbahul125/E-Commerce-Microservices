@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -15,5 +16,8 @@ public class OrderLineItemModel {
     private String skuCode;
     private Integer quantity;
     private BigDecimal price;
-    private OrderModel order;
+
+    private Date createdAt;
+    private Date updatedAt;
+
 }

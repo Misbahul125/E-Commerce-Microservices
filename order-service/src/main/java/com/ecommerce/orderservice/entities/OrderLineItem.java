@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 @Table(name = "order_line_items")
@@ -24,5 +25,8 @@ public class OrderLineItem {
 
     @ManyToOne
     private Order order;
+
+    private Date createdAt;
+    private Date updatedAt;
 
 }

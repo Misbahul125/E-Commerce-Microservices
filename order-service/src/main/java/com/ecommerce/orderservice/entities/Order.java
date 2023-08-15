@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -25,4 +26,7 @@ public class Order {
     private List<OrderLineItem> orderLineItems;
 
     private BigDecimal totalAmount;
+
+    private Date createdAt;
+    private Date updatedAt;
 }
