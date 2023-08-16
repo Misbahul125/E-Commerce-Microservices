@@ -2,8 +2,8 @@ package com.ecommerce.productservice.service.implementation;
 
 import com.ecommerce.productservice.entity.Product;
 import com.ecommerce.productservice.exceptions.ResourceNotFoundException;
-import com.ecommerce.productservice.models.ApiResponseProductModels;
 import com.ecommerce.productservice.models.ProductModel;
+import com.ecommerce.productservice.models.apiResponseModels.ApiResponseProductModels;
 import com.ecommerce.productservice.repository.ProductRepository;
 import com.ecommerce.productservice.service.ProductService;
 import org.modelmapper.ModelMapper;

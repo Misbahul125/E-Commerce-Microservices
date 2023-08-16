@@ -1,8 +1,8 @@
 package com.ecommerce.productservice.controller;
 
-import com.ecommerce.productservice.models.ApiResponseProductModel;
-import com.ecommerce.productservice.models.ApiResponseProductModels;
 import com.ecommerce.productservice.models.ProductModel;
+import com.ecommerce.productservice.models.apiResponseModels.ApiResponseProductModel;
+import com.ecommerce.productservice.models.apiResponseModels.ApiResponseProductModels;
 import com.ecommerce.productservice.service.ProductService;
 import com.ecommerce.productservice.utility.AppConstants;
 import lombok.extern.slf4j.Slf4j;
@@ -71,7 +71,7 @@ public class ProductController {
     public ResponseEntity<ApiResponseProductModel> deleteProduct(@PathVariable String productId) {
         this.productService.deleteProduct(productId);
 
-        log.info("Product with product ID {} is created", productId);
+        log.info("Product with product ID {} is deleted", productId);
 
         ApiResponseProductModel apiResponseProductModel = new ApiResponseProductModel(true, HttpStatus.OK.value(),
                 "Product Deleted Successfully", null);

@@ -1,7 +1,7 @@
 package com.ecommerce.productservice.service;
 
-import com.ecommerce.productservice.models.ApiResponseProductModels;
 import com.ecommerce.productservice.models.ProductModel;
+import com.ecommerce.productservice.models.apiResponseModels.ApiResponseProductModels;
 
 public interface ProductService {
 

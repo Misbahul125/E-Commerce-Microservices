@@ -85,7 +85,7 @@ public class OrderController {
     public ResponseEntity<ApiResponseOrderModel> deleteProduct(@PathVariable Long orderId) {
         this.orderService.deleteOrder(orderId);
 
-        log.info("Order with order ID {} is created", orderId);
+        log.info("Order with order ID {} is deleted", orderId);
 
         ApiResponseOrderModel apiResponseOrderModel = new ApiResponseOrderModel(true, HttpStatus.OK.value(),
                 "Order Deleted Successfully", null);
