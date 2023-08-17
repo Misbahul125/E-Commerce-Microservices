@@ -4,33 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8f70239-fdd9-4134-b08a-fdb037a1088c" name="Changes" comment="Order Service updated &amp; Inventory Service added">
-      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/controller/InventoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/entities/Inventory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/exceptions/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/exceptions/ResourceNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/exceptions/apiResponseExceptions/ApiResponseResourceNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/models/InventoryModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/models/apiResponseModels/ApiResponseInventoryModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/models/apiResponseModels/ApiResponseInventoryModels.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/repository/InventoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/service/InventoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/service/implementation/InventoryServiceImplementation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/utility/AppConstants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order-service/src/main/java/com/ecommerce/orderservice/exceptions/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order-service/src/main/java/com/ecommerce/orderservice/exceptions/apiResponseExceptions/ApiResponseResourceNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/ecommerce/productservice/exceptions/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-service/src/main/java/com/ecommerce/productservice/exceptions/apiResponseExceptions/ApiResponseResourceNotFoundException.java" afterDir="false" />
+    <list default="true" id="f8f70239-fdd9-4134-b08a-fdb037a1088c" name="Changes" comment="Inventory Service updated and bugs fixed">
+      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/dto/InventoryResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/src/main/java/com/ecommerce/orderservice/config/WebClientConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/order-service/src/main/java/com/ecommerce/orderservice/dto/InventoryResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/controller/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/controller/InventoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/repository/InventoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/repository/InventoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/service/InventoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/service/InventoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/service/implementation/InventoryServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/service/implementation/InventoryServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/ecommerce/orderservice/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/java/com/ecommerce/orderservice/controller/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/ecommerce/orderservice/service/implementation/OrderServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/java/com/ecommerce/orderservice/service/implementation/OrderServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/ecommerce/productservice/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/ecommerce/productservice/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/ecommerce/productservice/exceptions/ResourceNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/ecommerce/productservice/exceptions/ResourceNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/ecommerce/productservice/models/ApiResponseProductModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/ecommerce/productservice/models/apiResponseModels/ApiResponseProductModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/ecommerce/productservice/models/ApiResponseProductModels.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/ecommerce/productservice/models/apiResponseModels/ApiResponseProductModels.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/ecommerce/productservice/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/ecommerce/productservice/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/java/com/ecommerce/productservice/service/implementation/ProductServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/java/com/ecommerce/productservice/service/implementation/ProductServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/product-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,31 +47,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Notification.DisplayName-DoNotAsk-Plugins Suggestion&quot;: &quot;Plugin suggestions available&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-WindowsDefender&quot;: &quot;Microsoft Defender configuration&quot;,
-    &quot;Notification.DoNotAsk-Plugins Suggestion&quot;: &quot;true&quot;,
-    &quot;Notification.DoNotAsk-WindowsDefender&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/JAVA PROJECTS/Microservices/E-Commerce/microservices-parent/product-service/src/main/java/com/ecommerce/productservice&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Notification.DisplayName-DoNotAsk-Plugins Suggestion": "Plugin suggestions available",
+    "Notification.DisplayName-DoNotAsk-WindowsDefender": "Microsoft Defender configuration",
+    "Notification.DoNotAsk-Plugins Suggestion": "true",
+    "Notification.DoNotAsk-WindowsDefender": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "E:/JAVA PROJECTS/Microservices/E-Commerce/microservices-parent/order-service/src/main/java/com/ecommerce/orderservice",
+    "settings.editor.selected.configurable": "advanced.settings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\JAVA PROJECTS\Microservices\E-Commerce\microservices-parent\product-service\src\main\java\com\ecommerce\productservice" />
       <recent name="E:\JAVA PROJECTS\Microservices\E-Commerce\microservices-parent\order-service\src\main\java\com\ecommerce\orderservice" />
+      <recent name="E:\JAVA PROJECTS\Microservices\E-Commerce\microservices-parent\product-service\src\main\java\com\ecommerce\productservice" />
       <recent name="E:\JAVA PROJECTS\Microservices\E-Commerce\microservices-parent\inventory-service\src\main\java\com\ecommerce\inventoryservice\exceptions" />
       <recent name="E:\JAVA PROJECTS\Microservices\E-Commerce\microservices-parent\inventory-service\src\main\java\com\ecommerce\inventoryservice" />
       <recent name="E:\JAVA PROJECTS\Microservices\E-Commerce\microservices-parent\inventory-service" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ProductServiceApplication">
+  <component name="RunManager" selected="Application.OrderServiceApplication">
     <configuration name="InventoryServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ecommerce.inventoryservice.InventoryServiceApplication" />
       <module name="inventory-service" />
@@ -143,9 +128,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ProductServiceApplication" />
         <item itemvalue="Application.OrderServiceApplication" />
         <item itemvalue="Application.InventoryServiceApplication" />
+        <item itemvalue="Application.ProductServiceApplication" />
         <item itemvalue="JUnit.ProductServiceApplicationTests" />
       </list>
     </recent_temporary>
@@ -183,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692111065864</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Inventory Service updated and bugs fixed">
+      <option name="closed" value="true" />
+      <created>1692168313869</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1692168313870</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -212,7 +205,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit with Product Service" />
     <MESSAGE value="Order Service updated &amp; Inventory Service added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Order Service updated &amp; Inventory Service added" />
+    <MESSAGE value="Inventory Service updated and bugs fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inventory Service updated and bugs fixed" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

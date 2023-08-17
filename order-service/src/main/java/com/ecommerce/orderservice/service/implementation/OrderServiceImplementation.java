@@ -1,5 +1,6 @@
 package com.ecommerce.orderservice.service.implementation;
 
+import com.ecommerce.orderservice.dto.InventoryResponse;
 import com.ecommerce.orderservice.entities.Order;
 import com.ecommerce.orderservice.entities.OrderLineItem;
 import com.ecommerce.orderservice.exceptions.ResourceNotFoundException;
@@ -17,9 +18,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -29,6 +32,9 @@ public class OrderServiceImplementation implements OrderService {
 
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private WebClient webClient;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -41,6 +47,7 @@ public class OrderServiceImplementation implements OrderService {
         Order order = this.modelMapper.map(orderModel, Order.class);
 
         List<OrderLineItem> orderLineItems = new ArrayList<>();
+        List<String> skuCodes = new ArrayList<>();
 
         Date date = new Date();
 
@@ -56,6 +63,8 @@ public class OrderServiceImplementation implements OrderService {
 
             orderLineItem.setOrder(order);
             orderLineItems.add(orderLineItem);
+
+            skuCodes.add(orderLineItemModel.getSkuCode());
         }
 
         order.setOrderLineItems(orderLineItems);
@@ -64,9 +73,25 @@ public class OrderServiceImplementation implements OrderService {
         order.setCreatedAt(date);
         order.setUpdatedAt(null);
 
-        Order createdOrder = orderRepository.save(order);
+        //sync call to inventory service to check product is in stock
+        InventoryResponse[] inventoryResponseArray = webClient.get()
+                .uri("http://localhost:8082/api/inventory/isInStock",
+                        uriBuilder -> uriBuilder.queryParam("skuCodes", skuCodes).build())
+                .retrieve()
+                .bodyToMono(InventoryResponse[].class)
+                .block();
 
-        return this.modelMapper.map(createdOrder, OrderModel.class);
+        assert inventoryResponseArray != null;
+        boolean allProductsAreInStock = Arrays.stream(inventoryResponseArray)
+                .allMatch(InventoryResponse::isInStock);
+
+        if (allProductsAreInStock) {
+            Order createdOrder = orderRepository.save(order);
+
+            return this.modelMapper.map(createdOrder, OrderModel.class);
+        }
+
+        return null;
     }
 
     @Override

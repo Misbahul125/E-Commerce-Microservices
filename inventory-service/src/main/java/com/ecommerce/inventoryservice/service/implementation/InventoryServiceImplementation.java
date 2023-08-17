@@ -1,5 +1,6 @@
 package com.ecommerce.inventoryservice.service.implementation;
 
+import com.ecommerce.inventoryservice.dto.InventoryResponse;
 import com.ecommerce.inventoryservice.entities.Inventory;
 import com.ecommerce.inventoryservice.exceptions.ResourceNotFoundException;
 import com.ecommerce.inventoryservice.models.InventoryModel;
@@ -50,8 +51,15 @@ public class InventoryServiceImplementation implements InventoryService {
 
     @Transactional(readOnly = true)
     @Override
-    public boolean isInventoryInStock(String skuCode) {
-        return this.inventoryRepository.findBySkuCode(skuCode).isPresent();
+    public List<InventoryResponse> isInventoryInStock(List<String> skuCodes) {
+        return this.inventoryRepository.findBySkuCodeIn(skuCodes)
+                .stream()
+                .map(inventory ->
+                    InventoryResponse.builder()
+                            .skuCode(inventory.getSkuCode())
+                            .isInStock(inventory.getQuantity() > 0)
+                            .build()
+                ).toList();
     }
 
     @Override

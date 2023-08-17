@@ -1,5 +1,6 @@
 package com.ecommerce.inventoryservice.controller;
 
+import com.ecommerce.inventoryservice.dto.InventoryResponse;
 import com.ecommerce.inventoryservice.models.InventoryModel;
 import com.ecommerce.inventoryservice.models.apiResponseModels.ApiResponseInventoryModel;
 import com.ecommerce.inventoryservice.models.apiResponseModels.ApiResponseInventoryModels;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/inventory")
@@ -42,10 +45,10 @@ public class InventoryController {
         return new ResponseEntity<>(apiResponseInventoryModel, HttpStatus.OK);
     }
 
-    @GetMapping("/isInStock/{skuCode}")
-    public boolean isInventoryInStock(@PathVariable String skuCode) {
+    @GetMapping("/isInStock")
+    public List<InventoryResponse> isInventoryInStock(@RequestParam List<String> skuCodes) {
 
-        return this.inventoryService.isInventoryInStock(skuCode);
+        return this.inventoryService.isInventoryInStock(skuCodes);
 
     }
 

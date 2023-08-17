@@ -24,12 +24,28 @@ public class OrderController {
 
         OrderModel placedOrder = this.orderService.placeOrder(orderModel);
 
-        log.info("Order with order ID {} is created", placedOrder.getOrderNumber());
+        ApiResponseOrderModel apiResponseOrderModel;
 
-        ApiResponseOrderModel apiResponseOrderModel = new ApiResponseOrderModel(true,
-                HttpStatus.CREATED.value(), "Order Placed Successfully", placedOrder);
+        if (placedOrder != null) {
 
-        return new ResponseEntity<>(apiResponseOrderModel, HttpStatus.CREATED);
+            log.info("Order with order ID {} is created", placedOrder.getOrderNumber());
+
+            apiResponseOrderModel= new ApiResponseOrderModel(true,
+                    HttpStatus.CREATED.value(), "Order Placed Successfully", placedOrder);
+
+            return new ResponseEntity<>(apiResponseOrderModel, HttpStatus.CREATED);
+
+        }
+
+        log.info("Unable to place order due to less quantity in stock");
+
+        apiResponseOrderModel= new ApiResponseOrderModel(true,
+                HttpStatus.REQUESTED_RANGE_NOT_SATISFIABLE.value(),
+                "Unable to place order due to less quantity in stock",
+                null);
+
+        return new ResponseEntity<>(apiResponseOrderModel, HttpStatus.REQUESTED_RANGE_NOT_SATISFIABLE);
+
     }
 
     @GetMapping("/{orderId}")
