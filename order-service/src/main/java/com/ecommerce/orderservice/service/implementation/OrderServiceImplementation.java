@@ -34,7 +34,7 @@ public class OrderServiceImplementation implements OrderService {
     private OrderRepository orderRepository;
 
     @Autowired
-    private WebClient webClient;
+    private WebClient.Builder webClientBuilder;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -74,8 +74,9 @@ public class OrderServiceImplementation implements OrderService {
         order.setUpdatedAt(null);
 
         //sync call to inventory service to check product is in stock
-        InventoryResponse[] inventoryResponseArray = webClient.get()
-                .uri("http://localhost:8082/api/inventory/isInStock",
+        InventoryResponse[] inventoryResponseArray = webClientBuilder.build()
+                .get()
+                .uri("http://inventory-service/api/inventory/isInStock",
                         uriBuilder -> uriBuilder.queryParam("skuCodes", skuCodes).build())
                 .retrieve()
                 .bodyToMono(InventoryResponse[].class)
