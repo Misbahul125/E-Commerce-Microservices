@@ -6,6 +6,7 @@ import com.ecommerce.inventoryservice.models.apiResponseModels.ApiResponseInvent
 import com.ecommerce.inventoryservice.models.apiResponseModels.ApiResponseInventoryModels;
 import com.ecommerce.inventoryservice.service.InventoryService;
 import com.ecommerce.inventoryservice.utility.AppConstants;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,8 +47,12 @@ public class InventoryController {
     }
 
     @GetMapping("/isInStock")
+    @SneakyThrows
     public List<InventoryResponse> isInventoryInStock(@RequestParam List<String> skuCodes) {
 
+        log.info("Wait started");
+        Thread.sleep(10000);
+        log.info("Wait ended");
         return this.inventoryService.isInventoryInStock(skuCodes);
 
     }

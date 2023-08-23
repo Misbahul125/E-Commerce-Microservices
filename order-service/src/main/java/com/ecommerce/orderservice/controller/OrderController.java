@@ -5,11 +5,16 @@ import com.ecommerce.orderservice.models.apiResponseModels.ApiResponseOrderModel
 import com.ecommerce.orderservice.models.apiResponseModels.ApiResponseOrderModels;
 import com.ecommerce.orderservice.service.OrderService;
 import com.ecommerce.orderservice.utility.AppConstants;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
+import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping("/api/order")
@@ -20,32 +25,46 @@ public class OrderController {
     private OrderService orderService;
 
     @PostMapping("/")
-    public ResponseEntity<ApiResponseOrderModel> placeOrder(@RequestBody OrderModel orderModel) {
+    @CircuitBreaker(name = "inventory", fallbackMethod = "orderFallbackMethod")
+    @TimeLimiter(name = "inventory")
+    @Retry(name = "inventory")
+    public CompletableFuture<ResponseEntity<ApiResponseOrderModel>> placeOrder(@RequestBody OrderModel orderModel) {
 
-        OrderModel placedOrder = this.orderService.placeOrder(orderModel);
+        return CompletableFuture.supplyAsync(() -> {
+            OrderModel placedOrder = this.orderService.placeOrder(orderModel);
 
-        ApiResponseOrderModel apiResponseOrderModel;
+            ApiResponseOrderModel apiResponseOrderModel;
 
-        if (placedOrder != null) {
+            if (placedOrder != null) {
 
-            log.info("Order with order ID {} is created", placedOrder.getOrderNumber());
+                log.info("Order with order ID {} is created", placedOrder.getOrderNumber());
+
+                apiResponseOrderModel= new ApiResponseOrderModel(true,
+                        HttpStatus.CREATED.value(), "Order Placed Successfully", placedOrder);
+
+                return new ResponseEntity<>(apiResponseOrderModel, HttpStatus.CREATED);
+
+            }
+
+            log.info("Unable to place order due to less quantity in stock");
 
             apiResponseOrderModel= new ApiResponseOrderModel(true,
-                    HttpStatus.CREATED.value(), "Order Placed Successfully", placedOrder);
+                    HttpStatus.REQUESTED_RANGE_NOT_SATISFIABLE.value(),
+                    "Unable to place order due to less quantity in stock",
+                    null);
 
-            return new ResponseEntity<>(apiResponseOrderModel, HttpStatus.CREATED);
+            return new ResponseEntity<>(apiResponseOrderModel, HttpStatus.REQUESTED_RANGE_NOT_SATISFIABLE);
+        });
 
-        }
+    }
 
-        log.info("Unable to place order due to less quantity in stock");
-
-        apiResponseOrderModel= new ApiResponseOrderModel(true,
-                HttpStatus.REQUESTED_RANGE_NOT_SATISFIABLE.value(),
-                "Unable to place order due to less quantity in stock",
+    public CompletableFuture<ResponseEntity<ApiResponseOrderModel>> orderFallbackMethod(OrderModel orderModel, RuntimeException runtimeException) {
+        ApiResponseOrderModel apiResponseOrderModel = new ApiResponseOrderModel(true,
+                HttpStatus.SERVICE_UNAVAILABLE.value(),
+                "Oops! Something went wrong, pleast try after some time",
                 null);
 
-        return new ResponseEntity<>(apiResponseOrderModel, HttpStatus.REQUESTED_RANGE_NOT_SATISFIABLE);
-
+        return CompletableFuture.supplyAsync(() -> new ResponseEntity<>(apiResponseOrderModel, HttpStatus.SERVICE_UNAVAILABLE));
     }
 
     @GetMapping("/{orderId}")
