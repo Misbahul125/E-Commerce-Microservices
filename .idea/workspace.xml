@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8f70239-fdd9-4134-b08a-fdb037a1088c" name="Changes" comment="API Gateway added">
+    <list default="true" id="f8f70239-fdd9-4134-b08a-fdb037a1088c" name="Changes" comment="CircuitBreaker with Resilience4j added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/controller/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/controller/InventoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/src/main/java/com/ecommerce/orderservice/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/java/com/ecommerce/orderservice/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/order-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692430756533</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="CircuitBreaker with Resilience4j added">
+      <option name="closed" value="true" />
+      <created>1692821429151</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1692821429152</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -246,7 +251,8 @@
     <MESSAGE value="Inventory Service and Oder Service updated with synchronous call" />
     <MESSAGE value="Eureka Discovery Server and Client added" />
     <MESSAGE value="API Gateway added" />
-    <option name="LAST_COMMIT_MESSAGE" value="API Gateway added" />
+    <MESSAGE value="CircuitBreaker with Resilience4j added" />
+    <option name="LAST_COMMIT_MESSAGE" value="CircuitBreaker with Resilience4j added" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

@@ -50,9 +50,9 @@ public class InventoryController {
     @SneakyThrows
     public List<InventoryResponse> isInventoryInStock(@RequestParam List<String> skuCodes) {
 
-        log.info("Wait started");
+        /*log.info("Wait started");
         Thread.sleep(10000);
-        log.info("Wait ended");
+        log.info("Wait ended");*/
         return this.inventoryService.isInventoryInStock(skuCodes);
 
     }
