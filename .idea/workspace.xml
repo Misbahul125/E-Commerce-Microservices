@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8f70239-fdd9-4134-b08a-fdb037a1088c" name="Changes" comment="CircuitBreaker with Resilience4j added">
+    <list default="true" id="f8f70239-fdd9-4134-b08a-fdb037a1088c" name="Changes" comment="Bugs fixed in InventoryController">
+      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/ecommerce/apigateway/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/controller/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/ecommerce/inventoryservice/controller/InventoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,11 +140,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.InventoryServiceApplication" />
-        <item itemvalue="Application.OrderServiceApplication" />
-        <item itemvalue="Application.ProductServiceApplication" />
         <item itemvalue="Application.ApiGatewayApplication" />
+        <item itemvalue="Application.ProductServiceApplication" />
         <item itemvalue="Application.DiscoveryServerApplication" />
+        <item itemvalue="Application.OrderServiceApplication" />
+        <item itemvalue="Application.InventoryServiceApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -218,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692821429152</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Bugs fixed in InventoryController">
+      <option name="closed" value="true" />
+      <created>1692821878823</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1692821878823</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -252,7 +263,8 @@
     <MESSAGE value="Eureka Discovery Server and Client added" />
     <MESSAGE value="API Gateway added" />
     <MESSAGE value="CircuitBreaker with Resilience4j added" />
-    <option name="LAST_COMMIT_MESSAGE" value="CircuitBreaker with Resilience4j added" />
+    <MESSAGE value="Bugs fixed in InventoryController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugs fixed in InventoryController" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
