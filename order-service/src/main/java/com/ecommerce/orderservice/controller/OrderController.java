@@ -61,7 +61,7 @@ public class OrderController {
     public CompletableFuture<ResponseEntity<ApiResponseOrderModel>> orderFallbackMethod(OrderModel orderModel, RuntimeException runtimeException) {
         ApiResponseOrderModel apiResponseOrderModel = new ApiResponseOrderModel(true,
                 HttpStatus.SERVICE_UNAVAILABLE.value(),
-                "Oops! Something went wrong, pleast try after some time",
+                "Oops! Something went wrong, please order after some time.",
                 null);
 
         return CompletableFuture.supplyAsync(() -> new ResponseEntity<>(apiResponseOrderModel, HttpStatus.SERVICE_UNAVAILABLE));

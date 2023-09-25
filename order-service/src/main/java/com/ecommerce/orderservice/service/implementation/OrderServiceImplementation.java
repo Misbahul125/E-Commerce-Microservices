@@ -3,6 +3,7 @@ package com.ecommerce.orderservice.service.implementation;
 import com.ecommerce.orderservice.dto.InventoryResponse;
 import com.ecommerce.orderservice.entities.Order;
 import com.ecommerce.orderservice.entities.OrderLineItem;
+import com.ecommerce.orderservice.event.OrderPlacedEvent;
 import com.ecommerce.orderservice.exceptions.ResourceNotFoundException;
 import com.ecommerce.orderservice.models.OrderLineItemModel;
 import com.ecommerce.orderservice.models.OrderModel;
@@ -16,6 +17,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -38,6 +40,9 @@ public class OrderServiceImplementation implements OrderService {
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private KafkaTemplate<String, OrderPlacedEvent> kafkaTemplate;
 
     @Override
     public OrderModel placeOrder(OrderModel orderModel) {
@@ -88,6 +93,9 @@ public class OrderServiceImplementation implements OrderService {
 
         if (allProductsAreInStock) {
             Order createdOrder = orderRepository.save(order);
+
+            kafkaTemplate
+                    .send("notificationTopic", new OrderPlacedEvent(createdOrder.getOrderNumber()));
 
             return this.modelMapper.map(createdOrder, OrderModel.class);
         }
